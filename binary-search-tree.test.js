@@ -40,10 +40,10 @@ beforeEach(function () {
    *               50
    *           /       \
    *        25           75
-   *      /    \            \
-   *   10       40           100
-   *     \
-   *      15
+   *      /    \        /    \
+   *   10       40    60      100
+   *     \           / 
+   *      15       55 
    */
   const n10 = new Node(10);
   const n15 = new Node(15);
@@ -369,39 +369,39 @@ describe("dfsInOrder", function () {
   });
 });
 
-describe("dfsInOrderWithHelper", function () {
-  it("returns an array of values found with DFS In Order(small)", function () {
-    expect(smallBST.dfsInOrderWithHelper()).toEqual([10, 20]);
-  });
+// describe("dfsInOrderWithHelper", function () {
+//   it("returns an array of values found with DFS In Order(small)", function () {
+//     expect(smallBST.dfsInOrderWithHelper()).toEqual([10, 20]);
+//   });
 
-  it("returns an array of values found with DFS In Order(large)", function () {
-    expect(largeBST.dfsInOrderWithHelper()).toEqual([
-      10, 15, 25, 40, 50, 75, 100,
-    ]);
-  });
+//   it("returns an array of values found with DFS In Order(large)", function () {
+//     expect(largeBST.dfsInOrderWithHelper()).toEqual([
+//       10, 15, 25, 40, 50, 75, 100,
+//     ]);
+//   });
 
-  it("returns an array of values found with DFS In Order(empty)", function () {
-    console.log("About to run dfs in order on empty table");
-    expect(emptyBST.dfsInOrderWithHelper()).toEqual([]);
-  });
-});
+//   it("returns an array of values found with DFS In Order(empty)", function () {
+//     console.log("About to run dfs in order on empty table");
+//     expect(emptyBST.dfsInOrderWithHelper()).toEqual([]);
+//   });
+// });
 
-describe("dfsInOrderIterative", function () {
-  it("returns an array of values found with DFS In Order(small)", function () {
-    expect(smallBST.dfsInOrderWithHelper()).toEqual([10, 20]);
-  });
+// describe("dfsInOrderIterative", function () {
+//   it("returns an array of values found with DFS In Order(small)", function () {
+//     expect(smallBST.dfsInOrderWithHelper()).toEqual([10, 20]);
+//   });
 
-  it("returns an array of values found with DFS In Order(large)", function () {
-    expect(largeBST.dfsInOrderWithHelper()).toEqual([
-      10, 15, 25, 40, 50, 75, 100,
-    ]);
-  });
+//   it("returns an array of values found with DFS In Order(large)", function () {
+//     expect(largeBST.dfsInOrderWithHelper()).toEqual([
+//       10, 15, 25, 40, 50, 75, 100,
+//     ]);
+//   });
 
-  it("returns an array of values found with DFS In Order(empty)", function () {
-    console.log("About to run dfs in order on empty table");
-    expect(emptyBST.dfsInOrderWithHelper()).toEqual([]);
-  });
-});
+//   it("returns an array of values found with DFS In Order(empty)", function () {
+//     console.log("About to run dfs in order on empty table");
+//     expect(emptyBST.dfsInOrderWithHelper()).toEqual([]);
+//   });
+// });
 
 describe("dfsPostOrder", function () {
   it("returns an array of values found with DFS Post Order(small)", function () {
@@ -415,19 +415,19 @@ describe("dfsPostOrder", function () {
   });
 });
 
-describe("dfsPostOrderWithHelper", function () {
-  it("returns an array of values found with DFS Post Order(small)", function () {
-    expect(smallBST.dfsPostOrderWithHelper()).toEqual([20, 10]);
-  });
-  it("returns an array of values found with DFS Post Order(large)", function () {
-    expect(largeBST.dfsPostOrderWithHelper()).toEqual([
-      15, 10, 40, 25, 100, 75, 50,
-    ]);
-  });
-  it("returns an array of values found with DFS Post Order(empty)", function () {
-    expect(emptyBST.dfsPostOrderWithHelper()).toEqual([]);
-  });
-});
+// describe("dfsPostOrderWithHelper", function () {
+//   it("returns an array of values found with DFS Post Order(small)", function () {
+//     expect(smallBST.dfsPostOrderWithHelper()).toEqual([20, 10]);
+//   });
+//   it("returns an array of values found with DFS Post Order(large)", function () {
+//     expect(largeBST.dfsPostOrderWithHelper()).toEqual([
+//       15, 10, 40, 25, 100, 75, 50,
+//     ]);
+//   });
+//   it("returns an array of values found with DFS Post Order(empty)", function () {
+//     expect(emptyBST.dfsPostOrderWithHelper()).toEqual([]);
+//   });
+// });
 
 describe("bfs", function () {
   it("returns an array of values found with BFS(small)", function () {
@@ -463,82 +463,82 @@ describe("findSuccessorNode", function () {
   });
 });
 
-describe("remove", function () {
-  it("removes a root node with no children", function () {
-    emptyBST.insert(10);
-    emptyBST.remove(10);
-    expect(emptyBST.root).toBe(null);
-  });
+// describe("remove", function () {
+//   it("removes a root node with no children", function () {
+//     emptyBST.insert(10);
+//     emptyBST.remove(10);
+//     expect(emptyBST.root).toBe(null);
+//   });
 
-  it("removes a node with no children", function () {
-    smallBST.remove(20);
-    expect(smallBST.root.left).toBe(null);
-    expect(smallBST.root.right).toBe(null);
-  });
+//   it("removes a node with no children", function () {
+//     smallBST.remove(20);
+//     expect(smallBST.root.left).toBe(null);
+//     expect(smallBST.root.right).toBe(null);
+//   });
 
-  it("removes a (root) node with one child (small)", function () {
-    smallBST.remove(10);
-    expect(smallBST.root.val).toBe(20);
-  });
+//   it("removes a (root) node with one child (small)", function () {
+//     smallBST.remove(10);
+//     expect(smallBST.root.val).toBe(20);
+//   });
 
-  it("removes a node with one child (large)", function () {
-    largeBST.remove(75);
-    expect(largeBST.root.right.val).toBe(100);
-    expect(largeBST.root.right.left).toBe(null);
-    expect(largeBST.root.right.right).toBe(null);
+//   it("removes a node with one child (large)", function () {
+//     largeBST.remove(75);
+//     expect(largeBST.root.right.val).toBe(100);
+//     expect(largeBST.root.right.left).toBe(null);
+//     expect(largeBST.root.right.right).toBe(null);
 
-    largeBST.remove(10);
-    expect(largeBST.root.left.left.val).toBe(15);
-    expect(largeBST.root.left.left.left).toBe(null);
-    expect(largeBST.root.left.left.right).toBe(null);
-  });
+//     largeBST.remove(10);
+//     expect(largeBST.root.left.left.val).toBe(15);
+//     expect(largeBST.root.left.left.left).toBe(null);
+//     expect(largeBST.root.left.left.right).toBe(null);
+//   });
 
-  it("removes a (root) node with two children (small)", function () {
-    smallBST.insert(5);
-    /**
-     *
-     *            root
-     *              |
-     *              v
-     *              10
-     *            /    \
-     *           5      20
-     */
-    smallBST.remove(10);
-    expect(smallBST.root.val).toBe(20);
-    expect(smallBST.root.left.val).toBe(5);
-    expect(smallBST.root.right).toBe(null);
-  });
+//   it("removes a (root) node with two children (small)", function () {
+//     smallBST.insert(5);
+//     /**
+//      *
+//      *            root
+//      *              |
+//      *              v
+//      *              10
+//      *            /    \
+//      *           5      20
+//      */
+//     smallBST.remove(10);
+//     expect(smallBST.root.val).toBe(20);
+//     expect(smallBST.root.left.val).toBe(5);
+//     expect(smallBST.root.right).toBe(null);
+//   });
 
-  it("removes a node with two children (large)", function () {
-    largeBST.remove(25);
+//   it("removes a node with two children (large)", function () {
+//     largeBST.remove(25);
 
-    expect(largeBST.root.left.val).toBe(40);
-    expect(largeBST.root.left.left.val).toBe(10);
-    expect(largeBST.root.left.right).toBe(null);
-  });
+//     expect(largeBST.root.left.val).toBe(40);
+//     expect(largeBST.root.left.left.val).toBe(10);
+//     expect(largeBST.root.left.right).toBe(null);
+//   });
 
-  it("removes a ( root) node with two children (find inorder successor, complex)", function () {
-    largeBST.insert(60);
-    largeBST.insert(59);
+//   it("removes a ( root) node with two children (find inorder successor, complex)", function () {
+//     largeBST.insert(60);
+//     largeBST.insert(59);
 
-    /**
-     *              root
-     *               |
-     *               v
-     *               50
-     *           /        \
-     *        25            75
-     *      /    \         /    \
-     *   10       40      60     100
-     *     \             /
-     *      15          59
-     */
-    largeBST.remove(50);
-    expect(largeBST.root.val).toBe(59);
-    expect(largeBST.root.right.val).toBe(75);
-    expect(largeBST.root.right.left.val).toBe(60);
-    expect(largeBST.root.right.left.left).toBe(null);
-    expect(largeBST.root.right.left.right).toBe(null);
-  });
-});
+//     /**
+//      *              root
+//      *               |
+//      *               v
+//      *               50
+//      *           /        \
+//      *        25            75
+//      *      /    \         /    \
+//      *   10       40      60     100
+//      *     \             /
+//      *      15          59
+//      */
+//     largeBST.remove(50);
+//     expect(largeBST.root.val).toBe(59);
+//     expect(largeBST.root.right.val).toBe(75);
+//     expect(largeBST.root.right.left.val).toBe(60);
+//     expect(largeBST.root.right.left.left).toBe(null);
+//     expect(largeBST.root.right.left.right).toBe(null);
+//   });
+// });
