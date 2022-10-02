@@ -91,6 +91,7 @@ class BinarySearchTree {
 
   findRecursively(val, current = this.root) {
     if (!current) return undefined;
+
     if (current.val === val) return current;
 
     let move = (val < current.val ? current.left : current.right);
@@ -102,6 +103,7 @@ class BinarySearchTree {
 
   dfsPreOrder(node = this.root, visited = []) {
     if (!node) return visited;
+
     visited.push(node.val);
     this.dfsPreOrder(node.left, visited);
     this.dfsPreOrder(node.right, visited);
@@ -114,6 +116,7 @@ class BinarySearchTree {
 
   dfsInOrder(node = this.root, visited = []) {
     if (!node) return visited;
+
     this.dfsInOrder(node.left, visited);
     visited.push(node.val);
     this.dfsInOrder(node.right, visited);
@@ -126,6 +129,7 @@ class BinarySearchTree {
 
   dfsPostOrder(node = this.root, visited = []) {
     if (!node) return visited;
+
     this.dfsPostOrder(node.left, visited);
     this.dfsPostOrder(node.right, visited);
     visited.push(node.val);
@@ -153,19 +157,18 @@ class BinarySearchTree {
   /** findSuccessorNode(): Find the node with the next largest value.
    * Return successor node or undefined if not found. */
 
-  findSuccessorNode(node, current = this.root, max = Infinity) {
-    //check if current.val <= node
-    //if true, move right, if > move to left, compare to max and save if < max
-    //repeat
+  findSuccessorNode(node, current = this.root) {
+
     if (current.val <= node.val) {
-      if(!current.right) return undefined;
+      if (!current.right) return undefined;
       return this.findSuccessorNode(node, current.right);
     }
 
     if (current.val > node.val) {
-      if(!current.left) return current;
+      if (!current.left) return current;
       return this.findSuccessorNode(node, current.left);
     }
+
   }
 
   /** Further Study!
